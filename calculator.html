@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="calc.css">
+    <script src="sweetalert.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Calculator</title>
+</head>
+<body>
+      <h1 id="name"><em>Ghaniyu <strong>Calculator</strong></em></h1>
+      <hr size="3" noshade>
+      <br>
+      <div class="calbody">
+      <form name="calform" onclick="val()">
+
+        <input id="calc" type="text" name="mathtext" placeholder="0" readonly="readonly"><br><br> <!--readonly attribute makes display uneditable-->
+
+
+
+        <input type="button" value="CE"  onclick="calform.mathtext.value ='' ">    
+        <input type="button" value="&#8592"  onclick="(deleteChar())" > <!--deleteChar is a function in 'val' function and both functions can be called-->
+        <input type="button" value="+"  onclick="calform.mathtext.value += '+' ">
+        <input type="button"  value="OFF" id="buttonA" style='background-color:rgba(212, 68, 68, 0.911) ;' onclick="flipswitch();">
+        <br><br>
+  
+         
+        <input type="button" value="1"  onclick="calform.mathtext.value += '1' ">  
+        <input type="button" value="2 "  onclick="calform.mathtext.value += '2' ">
+        <input type="button" value="3"  onclick="calform.mathtext.value += '3'">
+        <input type="button" value="/ "  onclick="calform.mathtext.value += '/' ">
+        <br></br>
+  
+        <input type="button" value="4 "  onclick="calform.mathtext.value += '4' ">
+        <input type="button" value="5 "  onclick="calform.mathtext.value += '5' ">
+        <input type="button" value="6"  onclick="calform.mathtext.value += '6' ">
+        <input type="button" value="*"  onclick="calform.mathtext.value += '*' ">     
+        <br><br>
+  
+        <input type="button" value="7"  onclick="calform.mathtext.value += '7' ">
+        <input type="button" value="8"  onclick="calform.mathtext.value += '8' ">
+        <input type="button" value="9"  onclick="calform.mathtext.value += '9' ">
+        <input type="button" value="-"  onclick="calform.mathtext.value += '-' "> 
+        <br><br>
+  
+        <input type="button" value="."  onclick="calform.mathtext.value += '.' ">
+        <input type="button" value="0 "  onclick="calform.mathtext.value += '0' ">
+        <input type="button" value="&radic;"  onclick="sqrt(calform.mathtext.value)" >
+        <input type="button" value="log"  onclick="log(calform.mathtext.value)"> 
+        <br><br>
+          
+  
+  
+        <input type="button" value="="  onclick="calform.mathtext.value =eval(calform.mathtext.value) " id='total'> 
+        </form>
+  
+  
+  
+        </div>
+  
+        <script>
+  
+        var status="on";                                    //declares status variable as default 'on' 
+        var input=document.getElementById('calc');        //declares and sets input variable to show nothing on default on the calculator display
+        calc.value=" ";
+  
+        function val(){                                    //calling val function
+         if(status == 'on'){                                //conditional statement; if button is off, restric access to input values with sweer alert popup
+         swal("OFF!!!","Kindly Turn On Calculator","error");
+        var input=document.getElementById('calc');        //declares input variable to display empty tag when button is off 
+        calc.value=" ";
+         return;
+        
+  
+     }
+                                                                 //else if button is on, show math operations on calculator display using its id
+        document.getElementById('calc').value =calform.mathtext.value;
+        }
+     
+  
+  
+        function flipswitch(){                          //calling flipswitch function i.e on/off button
+         if(status == 'on'){                             //conditional statement; if button is turned on, 
+         status='off';                                   //default status is set inactive
+         document.getElementById('buttonA').style='background-color:rgba(86, 219, 92, 0.911)';  //button color is gotten by id and changed to green
+        var input=document.getElementById('buttonA');       //declares input variable to get id of button  
+        buttonA.value="ON";a                                 //change input value of button to ON
+       
+                                                           //declares input variable to get the id of calculator display
+  
+         }else{
+         status='on';                                    //else, if button is turned off, status is back to default state 'on'
+         document.getElementById('buttonA').style='background-color:rgba(212, 68, 68, 0.911)';   //button color is gotten by id and changed to red
+        var input=document.getElementById('buttonA');           //declares input variable to get id of button
+        buttonA.value="OFF";                                    //change input value of botton to 'OFF'
+        var input=document.getElementById('calc');              //declares input variable to get the id of calculator display
+        calc.value=" ";                                         //shows empty tag on calculator display
+    
+         }
+        }  
+  
+     
+  
+     
+  
+        function sqrt(){                                                               //calls sqrt function in html
+        calform.mathtext.value=Math.sqrt(calform.mathtext.value);                    //equates answer to mathematical sqrt operation
+        }
+  
+  
+        function log(){                                                                //calls log function in html
+        calform.mathtext.value=Math.log(calform.mathtext.value);                    //equates answer to mathematical log operation
+        }
+  
+        function deleteChar(){                                                         //calls deleteChar function in html
+        calform.mathtext.value=calform.mathtext.value.slice(0,-1);                  //equates answer to mathematical delete operation
+        }
+  
+  </script>
+  </body>
+  
+  
+  </html>
+</body>
+</html>
